@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint --ext js src/"
   },
   "dependencies": {
     "@types/node": "^18.0.3",
@@ -16,6 +17,12 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.3",
+    "eslint": "^8.20.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "husky": "^4.0.0",
     "less": "^4.1.3",
     "typescript": "^4.5.4",
     "vite": "^2.9.9",

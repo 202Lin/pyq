@@ -1,18 +1,27 @@
-# Vue 3 + TypeScript + Vite
-
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
-
-## Type Support For `.vue` Imports in TS
-
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
-
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
-
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
 # pyq
+
 方便发朋友圈，正对图片进行九宫格裁剪等一系列功能的项目
+
+# 一些配置文件介绍
+
+package.json "build": "vue-tsc --noEmit && vite build",
+vite 本身只会编译 ts 而不会校验， vscode 本身会有校验提示，vue-tsc 是编译 vue 文件里面的 ts
+
+# 下载配置 eslint
+
+npm install eslint-config-standard eslint-plugin-import
+eslint-plugin-promise eslint-plugin-node -D
+
+# 配置 prettier 插件
+
+在插件 prettier-code fromatter 里面搜 format on save 勾选上搜 fomatter 勾选上我们的插件 prettier
+然后可以新建一个.prettier 文件，自己配置规范
+
+# 在 package.json 里面新加了一个命令，可以校验出整个项目不符合规范的地方
+
+"lint": "eslint --ext js /src"
+
+# 保证git提交规范
+npm install husky@4.0.0 -D  指定一下版本，不然后面会出错，不指定也行，按照网上教程改一下
+npx husky install
+npx husky add .husky/pre-commit "npm run lint"

@@ -1,18 +1,23 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "esnext",// 比较新的es语法
     "useDefineForClassFields": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "jsx": "preserve",
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
+    "module": "esnext", // 开发环境模块加载的适合，使用es module
+    "moduleResolution": "node",// 通过node方式来解析模块
+    "strict": true,// 严格模式
+    "jsx": "preserve", // 不编译jsx语法，因为模式是编译react的jsx语法，但是那个不符合vue的jsx的规范，需要下载插件VueJsx
+    "sourceMap": true,// 代码上线会经过开发者工具打包压缩丑化，所以如果出现问题，是很难debug的，sourceMap开启后就会生成一个映射文件，帮助找到问题代码位置
+    "resolveJsonModule": true,//是否 可以直接import json
+    "isolatedModules": true,// 其实开启后每个文件都必须是一个模块，需要导入或者 导出
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
-    "skipLibCheck": true
+    "lib": ["esnext", "dom"],// 声明哪些有内置的模块，不让ts报错
+    "skipLibCheck": true,
+    "types": ["vite/client"],//告诉tsvite一些内置对象的类型,加上后一些文件返回类型（图片文件），env环境变量，热更新api，ts都能够知道
+    // 例如import.meta.env; 
   },
+  // 编译哪些文件
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
+/* isolatedModules： vite提供的对ts的编译功能比较简单，只能对的文件编译，存在文件间引入的 vite就不能处理了
+*/
